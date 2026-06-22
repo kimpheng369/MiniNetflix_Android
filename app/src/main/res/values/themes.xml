@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.MiniNetflix" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/netflix_red</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <!-- Customize window colors. -->
+        <item name="android:windowBackground">@color/background_black</item>
+        <item name="android:statusBarColor">@color/background_black</item>
+        <item name="android:navigationBarColor">@color/background_black</item>
+    </style>
+</resources>

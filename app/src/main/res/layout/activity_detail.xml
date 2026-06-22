@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_black">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Backdrop Image -->
+        <ImageView
+            android:id="@+id/detail_backdrop"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@android:color/darker_gray" />
+
+        <!-- Gradient overlay on backdrop -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:background="@drawable/hero_gradient_overlay"
+            app:layout_constraintBottom_toBottomOf="@id/detail_backdrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Back Button -->
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Poster Image -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_poster"
+            android:layout_width="110dp"
+            android:layout_height="165dp"
+            android:layout_marginStart="16dp"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/detail_backdrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detail_backdrop">
+
+            <ImageView
+                android:id="@+id/detail_poster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:src="@android:color/holo_red_dark" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Movie Details Card (Title, Rating, Release Date) -->
+        <TextView
+            android:id="@+id/detail_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_poster"
+            app:layout_constraintTop_toBottomOf="@id/detail_backdrop"
+            tools:text="Movie Title Here" />
+
+        <TextView
+            android:id="@+id/detail_release_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/detail_title"
+            app:layout_constraintStart_toStartOf="@id/detail_title"
+            app:layout_constraintTop_toBottomOf="@id/detail_title"
+            tools:text="Released: 2026-06-22" />
+
+        <TextView
+            android:id="@+id/detail_rating"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/netflix_red"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/detail_title"
+            app:layout_constraintStart_toStartOf="@id/detail_title"
+            app:layout_constraintTop_toBottomOf="@id/detail_release_date"
+            tools:text="Rating: 8.2/10" />
+
+        <!-- Trailer & Favorite buttons -->
+        <LinearLayout
+            android:id="@+id/actions_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_poster">
+
+            <!-- Watch Trailer -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_watch_trailer"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="@string/watch_trailer"
+                android:textColor="@color/black"
+                app:backgroundTint="@color/white"
+                app:icon="@android:drawable/ic_media_play"
+                app:iconTint="@color/black" />
+
+            <!-- Add to My List -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_mylist"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="@string/add_to_list"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/card_background"
+                app:icon="@drawable/ic_my_list"
+                app:iconTint="@color/white" />
+        </LinearLayout>
+
+        <!-- Overview Title -->
+        <TextView
+            android:id="@+id/overview_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:text="Overview"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/actions_layout" />
+
+        <!-- Overview content -->
+        <TextView
+            android:id="@+id/detail_overview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="15sp"
+            android:lineSpacingMultiplier="1.2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/overview_label"
+            tools:text="This is a description of the movie. It explains the plot, theme, and main conflicts." />
+
+        <!-- Recommendations Section -->
+        <TextView
+            android:id="@+id/tv_similar_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/similar_movies"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detail_overview" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_similar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_similar_label"
+            tools:listitem="@layout/item_movie_poster" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
